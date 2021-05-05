@@ -16,6 +16,11 @@ export function TaskList() {
 
   function handleCreateNewTask() {
     // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
+    if (newTaskTitle.trim() === '') {
+      alert('Escreva alguma tarefa antes de adicionar à lista');
+      return false;
+    }
+
     setTasks([
       ...tasks,
       {
@@ -24,6 +29,8 @@ export function TaskList() {
         isComplete: false,
       },
     ]);
+
+    setNewTaskTitle('');
   }
 
   function handleToggleTaskCompletion(id: number) {
